@@ -7,6 +7,7 @@ const Search = ({ onChangeText, text }) => {
       style={styles.searchInput}
       onChangeText={onChangeText}
       value={text}
+      placeholder="Search"
     />
   );
 };
