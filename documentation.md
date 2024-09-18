@@ -9,6 +9,7 @@ Project Setup Documentation
     -Imported the Slot component to allow child elements to render properly within the layout.
 3. API Fetching
     -Although I typically use Axios for network requests, I opted for the built-in fetch method since this API requires a single, simple fetch operation.
+    It appears that the /people/ endpoint is not returning all available records as expected. The documentation indicates that this route should list all entries, but currently, only 10 results are being returned.
 4. FlatListWithSearch Component
     -Created the FlatListWithSearch component, which contains:
         -A Search component for filtering results. It uses state and onChange methods 
@@ -31,6 +32,8 @@ Project Setup Documentation
 
 8. Made a better design
     -Improved the design for a better user experience.
+
+9. Fixing expo go errors.
 
 
 

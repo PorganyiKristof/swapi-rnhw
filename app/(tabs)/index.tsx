@@ -14,14 +14,13 @@ export default function HomeScreen() {
   const [response , setResponse] = useState<FullList>();
 
   useEffect(()=>{
-    fetch("https://swapi.dev/api/people").then(res=>res.json()).then(result=>{
+    fetch("https://swapi.dev/api/people/").then(res=>res.json()).then(result=>{
       setIsLoading(false);
       setResponse(result);
     },(error) =>{
       setIsLoading(false);
       setError(error)
     })
-
   },[])
 
   const getContent = ()=>{

@@ -41,8 +41,8 @@ const FirstItemHeadSection = ({ headElement }) => {
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Head Item: {headElement[0].name}</Text>
         <Text style={styles.headerSubText}>
-          Birth Year: {headElement[0].birth_year} <br />
-          Height: {headElement[0].height} <br />
+          Birth Year: {headElement[0].birth_year} {"\n"}
+          Height: {headElement[0].height} {"\n"}
           Eye Color: {headElement[0].eye_color}
         </Text>
       </View>
@@ -55,30 +55,34 @@ const FirstItemHeadSection = ({ headElement }) => {
   );
 };
 
-const FlatListWithSearch = ({ data }) => {
+const FlatListWithSearch = ({ data = [] }) => {
   const [text, setText] = useState("");
   const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
+    if (!data || !Array.isArray(data)) return;
+
     let updatedData = [...data];
 
     if (text) {
-      updatedData = updatedData.filter((item) =>
-        item.name.toLowerCase().includes(text.toLowerCase())
+      updatedData = updatedData.filter(
+        (item) => item.name?.toLowerCase().includes(text.toLowerCase())
       );
     }
 
-    updatedData.sort((a, b) => a.name.localeCompare(b.name));
+    updatedData.sort((a, b) => a.name?.localeCompare(b.name));
 
     setFilteredData(updatedData);
   }, [text, data]);
 
-  const headElement = filteredData.slice(0, 1);
+  const headElement = filteredData?.slice(0, 1);
 
   return (
     <View style={styles.container}>
       <Search onChangeText={setText} text={text} />
-      <FirstItemHeadSection headElement={headElement} />
+      {headElement?.length > 0 && (
+        <FirstItemHeadSection headElement={headElement} />
+      )}
       <List data={filteredData} />
     </View>
   );
