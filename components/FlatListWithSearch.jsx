@@ -7,7 +7,6 @@ import {
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { Collapsible } from "./Collapsible";
 
 const Search = ({ onChangeText, text }) => {
   return (
@@ -65,8 +64,8 @@ const FlatListWithSearch = ({ data = [] }) => {
     let updatedData = [...data];
 
     if (text) {
-      updatedData = updatedData.filter(
-        (item) => item.name?.toLowerCase().includes(text.toLowerCase())
+      updatedData = updatedData.filter((item) =>
+        item.name?.toLowerCase().includes(text.toLowerCase())
       );
     }
 
@@ -80,9 +79,7 @@ const FlatListWithSearch = ({ data = [] }) => {
   return (
     <View style={styles.container}>
       <Search onChangeText={setText} text={text} />
-      {headElement?.length > 0 && (
-        <FirstItemHeadSection headElement={headElement} />
-      )}
+      <FirstItemHeadSection headElement={headElement} />
       <List data={filteredData} />
     </View>
   );
