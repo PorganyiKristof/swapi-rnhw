@@ -5,11 +5,17 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
+import FlatListWithSearch from '@/components/FlatListWithSearch';
+
+type FullList = {
+  count: number,
+  results: [],
+}
 
 export default function HomeScreen() {
   const [isLoading , setIsLoading] = useState(true);
   const [error , setError] = useState();
-  const [response , setResponse] = useState();
+  const [response , setResponse] = useState<FullList>();
 
   useEffect(()=>{
     fetch("https://swapi.dev/api/people").then(res=>res.json()).then(result=>{
@@ -30,8 +36,9 @@ export default function HomeScreen() {
     if(error){
       return <Text>ERROR: {error}</Text>
     }
-    console.log(response);
-    return <Text>API Called</Text>
+    return <FlatListWithSearch data={response?.results}>
+
+    </FlatListWithSearch>
   }
   return (
     <View style={styles.container}>
@@ -45,6 +52,7 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     justifyContent:'center',
-    textAlign:'center'
+    textAlign:'center',
+    alignItems: 'center',
   }
 });
