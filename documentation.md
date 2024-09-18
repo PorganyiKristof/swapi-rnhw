@@ -16,10 +16,21 @@ Project Setup Documentation
 
 5. Made a really simple design
 
-6. Jest : I intalled 2 package for the testing
-    - npm install --save-dev jest @testing-library/react-native @testing-library/jest-native
-    - created the TextFlatListSearch.test.js file and made 2 tests
+6. Testing with Jest
+    - Installed the following packages for testing: npm install --save-dev jest 
+            @testing-library/react-native @testing-library/jest-native
+    - Created the TextFlatListSearch.test.js file and made 2 tests
         1. FlatListWithSearch : Test for the search input and the item list
-        2. input = empty -> show all : When delete the text in the search bar u need to get back all the prev items
+        2. input = empty -> show all : Ensures that when the search bar is cleared, all previously displayed items 
+            are shown again.
 
-7.  
+7. Head Section & Data Sorting
+    -Added a head section where the first element in the list appears alphabetically (A-Z).
+    -Updated the useEffect hook to run on the initial load and sort the items.
+
+
+8. Made a better design
+    -Improved the design for a better user experience.
+
+
+
